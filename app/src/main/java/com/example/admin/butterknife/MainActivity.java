@@ -33,14 +33,29 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.tv_one)
-    void tvOneOnClick(View view) {
-        String content = ((TextView) view).getText().toString();
-        Toast.makeText(MainActivity.this, "" + content, Toast.LENGTH_SHORT).show();
-    }
+    //①
+//    @OnClick(R.id.tv_one)
+//    void tvOneOnClick(View view) {
+//        String content = ((TextView) view).getText().toString();
+//        Toast.makeText(MainActivity.this, "" + content, Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @OnClick(R.id.btn_1)
+//    void btnOnClick() {
+//        Toast.makeText(MainActivity.this, "test", Toast.LENGTH_SHORT).show();
+//    }
 
-    @OnClick(R.id.btn_1)
-    void btnOnClick() {
-        Toast.makeText(MainActivity.this, "test", Toast.LENGTH_SHORT).show();
+    //②
+    @OnClick({R.id.tv_one, R.id.btn_1})
+    void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_one:
+                String content = ((TextView) view).getText().toString();
+                Toast.makeText(MainActivity.this, "" + content, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btn_1:
+                Toast.makeText(MainActivity.this, "test2", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
